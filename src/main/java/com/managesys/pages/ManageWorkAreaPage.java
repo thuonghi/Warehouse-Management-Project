@@ -22,6 +22,8 @@ public class ManageWorkAreaPage {
     private By deleteBtn = By.xpath("//tbody/tr[1]/td[8]/a[1]");
     private String alertText = "Ban có muốn xóa phòng ban này";
     private By addbtn = By.xpath("//div[1]/div[2]/a[1]/button[1]");
+    private By searchInput =  By.xpath("//input[@name='query']");
+    private String searchText = "KV1020";
 
 
     //when click edit button
@@ -54,6 +56,13 @@ public class ManageWorkAreaPage {
         validataHelper.clickElement(addbtn);
         validataHelper.waitForPageLoaded();
         return new ManageWorkAreaPage_Add(driver);
+    }
+
+    //when find records
+    public void findFunction(){
+        Assert.assertTrue(validataHelper.verifyUrl(url), "Not Manage Area Page");
+        validataHelper.actionSendKeys(searchInput, searchText);
+
     }
 
 }
