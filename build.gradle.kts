@@ -19,6 +19,9 @@ dependencies {
     implementation ("org.seleniumhq.selenium:selenium-java:4.10.0")
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
     testImplementation ("org.slf4j:slf4j-simple:1.7.36")
+    // https://mvnrepository.com/artifact/org.apache.poi/poi
+    implementation ("org.apache.poi:poi:5.2.3")
+
 
 
 

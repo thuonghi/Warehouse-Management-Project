@@ -75,6 +75,13 @@ public class ValidataHelper {
         return alert.getText().equals(value);
     }
 
+    //sendKeys & enter
+    public void actionSendKeys(By element, String value){
+        actions = new Actions(driver);
+        actions.sendKeys(driver.findElement(element), value).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
+    }
+
     //Wait for page load
     public void waitForPageLoaded(){
         ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {

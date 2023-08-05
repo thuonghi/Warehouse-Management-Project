@@ -6,6 +6,7 @@ import com.managesys.pages.ManageUserPage;
 import com.managesys.pages.ManageWorkAreaPage;
 import com.managesys.pages.SignInPage;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -41,6 +42,10 @@ public class ManageWorkAreaPage_Edit extends BaseSetup {
         validataHelper = new ValidataHelper(driver);
         manageWorkAreaPage_edit=manageWorkAreaPage.editWorkArea();
         manageWorkAreaPage_edit.areaPage();
+    }
 
+    @AfterClass
+    public void closeBrowser(){
+        driver.close();
     }
 }

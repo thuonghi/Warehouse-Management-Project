@@ -2,24 +2,21 @@ package com.managesys.testcases;
 
 import com.managesys.base.BaseSetup;
 import com.managesys.base.ValidataHelper;
+import com.managesys.pages.DeFaultPasswordPage;
 import com.managesys.pages.ManageUserPage;
-import com.managesys.pages.ManageWorkAreaPage;
-import com.managesys.pages.ManageWorkAreaPage_Edit;
 import com.managesys.pages.SignInPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class ManageWorkAreaPage_View extends BaseSetup {
+public class DefaultPasswordPage extends BaseSetup {
     private WebDriver driver;
     public SignInPage signInPage;
     private ValidataHelper validataHelper;
     private ManageUserPage manageUserPage;
-    private ManageWorkAreaPage manageWorkAreaPage;
-    private com.managesys.pages.ManageWorkAreaPage_View manageWorkAreaPage_view;
-    private ManageWorkAreaPage_Edit manageWorkAreaPage_edit;
 
+    private DeFaultPasswordPage defaultPasswordPage;
 
 
     @BeforeClass
@@ -34,17 +31,10 @@ public class ManageWorkAreaPage_View extends BaseSetup {
     }
 
     @Test(priority = 1)
-    public void openManageAreaPage() {
+    public void openManageRoom() {
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage=manageUserPage.openManageArea();
-    }
-
-    @Test(priority = 3)
-    public void viewWorkArea(){
-        validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage_view=manageWorkAreaPage.viewWorkArea();
-        manageWorkAreaPage_edit = manageWorkAreaPage_view.checkViewAreaPage();
-        manageWorkAreaPage_edit.areaPage();
+        defaultPasswordPage =manageUserPage.openDeFaultPasswordPage();
+        defaultPasswordPage.changePassword();
     }
 
     @AfterClass

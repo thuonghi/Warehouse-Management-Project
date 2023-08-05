@@ -1,24 +1,23 @@
 package com.managesys.testcases;
 
+import com.managesys.base.BaseSetup;
 import com.managesys.base.ValidataHelper;
+import com.managesys.pages.ManageRoomPage;
 import com.managesys.pages.ManageUserPage;
-import com.managesys.pages.ManageWorkAreaPage;
 import com.managesys.pages.ManageWorkAreaPage_Edit;
+import com.managesys.pages.SignInPage;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.managesys.base.BaseSetup;
-import com.managesys.pages.SignInPage;
-
-public class ProjectTest extends BaseSetup {
-
+public class ManageRoomPage_Edit extends BaseSetup {
     private WebDriver driver;
     public SignInPage signInPage;
     private ValidataHelper validataHelper;
     private ManageUserPage manageUserPage;
-    private ManageWorkAreaPage manageWorkAreaPage;
-    private ManageWorkAreaPage_Edit manageWorkAreaPage_edit;
+    private ManageRoomPage manageRoomPage;
+    private com.managesys.pages.ManageRoomPage_Edit manageRoomPage_edit;
 
 
 
@@ -29,21 +28,25 @@ public class ProjectTest extends BaseSetup {
 
     @Test(priority = 0)
     public void signIn() throws Exception {
-         signInPage = new SignInPage(driver);
-         manageUserPage = signInPage.signIn("admin@gmail.com", "Abc@1234");
+        signInPage = new SignInPage(driver);
+        manageUserPage = signInPage.signIn("admin@gmail.com", "Abc@1234");
     }
 
     @Test(priority = 1)
-    public void openManageAreaPage() {
+    public void openManageRoomPage() {
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage=manageUserPage.openManageArea();
+        manageRoomPage=manageUserPage.openManageRoomPage();
     }
 
     @Test(priority = 3)
-    public void deleteWorkArea(){
+    public void editRoom(){
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage.deleteWorkArea();
-
+        manageRoomPage_edit=manageRoomPage.editRoom();
+        manageRoomPage_edit.roomPage();
     }
 
+    @AfterClass
+    public void closeBrowser(){
+        driver.close();
+    }
 }

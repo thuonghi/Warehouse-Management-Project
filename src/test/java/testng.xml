@@ -5,7 +5,7 @@
     <parameter name="webURL" value="http://54.169.237.138:81/"></parameter>
     <test verbose="2" preserve-order="true" name="D:/Download/Online-Marriage-Registration-main/POM">
         <classes>
-            <class name="com.managesys.testcases.ManageWorkAreaPage_Add">
+            <class name="com.managesys.testcases.DefaultPasswordPage">
 
             </class>
         </classes>

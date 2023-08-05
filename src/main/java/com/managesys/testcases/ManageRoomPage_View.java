@@ -2,23 +2,24 @@ package com.managesys.testcases;
 
 import com.managesys.base.BaseSetup;
 import com.managesys.base.ValidataHelper;
+import com.managesys.pages.ManageRoomPage;
+import com.managesys.pages.ManageRoomPage_Edit;
 import com.managesys.pages.ManageUserPage;
-import com.managesys.pages.ManageWorkAreaPage;
-import com.managesys.pages.ManageWorkAreaPage_Edit;
 import com.managesys.pages.SignInPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class ManageWorkAreaPage_View extends BaseSetup {
+public class ManageRoomPage_View extends BaseSetup {
     private WebDriver driver;
     public SignInPage signInPage;
     private ValidataHelper validataHelper;
     private ManageUserPage manageUserPage;
-    private ManageWorkAreaPage manageWorkAreaPage;
-    private com.managesys.pages.ManageWorkAreaPage_View manageWorkAreaPage_view;
-    private ManageWorkAreaPage_Edit manageWorkAreaPage_edit;
+    private ManageRoomPage manageRoomPage;
+    private com.managesys.pages.ManageRoomPage_Search manageRoomPage_search;
+    private com.managesys.pages.ManageRoomPage_View manageRoomPage_view;
+    private ManageRoomPage_Edit manageRoomPage_edit;
 
 
 
@@ -34,21 +35,20 @@ public class ManageWorkAreaPage_View extends BaseSetup {
     }
 
     @Test(priority = 1)
-    public void openManageAreaPage() {
+    public void openManageRoomPage() {
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage=manageUserPage.openManageArea();
+        manageRoomPage=manageUserPage.openManageRoomPage();
     }
 
     @Test(priority = 3)
-    public void viewWorkArea(){
+    public void searchRoom(){
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage_view=manageWorkAreaPage.viewWorkArea();
-        manageWorkAreaPage_edit = manageWorkAreaPage_view.checkViewAreaPage();
-        manageWorkAreaPage_edit.areaPage();
+        manageRoomPage_view = manageRoomPage.viewRoom();
+        manageRoomPage_edit = manageRoomPage_view.checkViewRoomPage();
+        manageRoomPage_edit.roomPage();
     }
-
-    @AfterClass
-    public void closeBrowser(){
-        driver.close();
-    }
+//    @AfterClass
+//    public void closeBrowser(){
+//        driver.close();
+//    }
 }

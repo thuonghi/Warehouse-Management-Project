@@ -59,10 +59,10 @@ public class ManageWorkAreaPage {
     }
 
     //when find records
-    public void findFunction(){
+    public ManageWorkAreaPage_Search findFunction(){
         Assert.assertTrue(validataHelper.verifyUrl(url), "Not Manage Area Page");
         validataHelper.actionSendKeys(searchInput, searchText);
-
+        return new ManageWorkAreaPage_Search(driver);
     }
 
 }

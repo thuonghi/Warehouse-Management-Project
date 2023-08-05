@@ -40,24 +40,6 @@ public class ManageUserPage {
         return new ManageRoomPage(driver);
     }
 
-    public com.managesys.pages.ManageNewGoodsPage openManageNewGoodsPage() {
-        driver.findElement(manageNewGoods).click();
-        validataHelper.waitForPageLoaded();
-        return new ManageNewGoodsPage(driver);
-    }
-
-    public com.managesys.pages.ImportGoodsPage openImportGoodsPage () {
-        driver.findElement(importGoods).click();
-        validataHelper.waitForPageLoaded();
-        return new ImportGoodsPage(driver);
-    }
-
-    public ListOrdersPage openListOrdersPage () {
-        driver.findElement(listOrders).click();
-        validataHelper.waitForPageLoaded();
-        return new ListOrdersPage (driver);
-    }
-
     public DeFaultPasswordPage openDeFaultPasswordPage () {
         driver.findElement(defaultPassword).click();
         validataHelper.waitForPageLoaded();
