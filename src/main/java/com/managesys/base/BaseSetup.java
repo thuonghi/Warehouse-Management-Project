@@ -98,11 +98,4 @@ public class BaseSetup {
         }
     }
 
-    @AfterClass
-    public void tearDown() throws Exception {
-        if(driver != null){
-            driver.close();
-        }
-    }
-
 }
