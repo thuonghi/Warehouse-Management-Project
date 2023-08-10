@@ -41,14 +41,14 @@ public class ManageRoomPage_View extends BaseSetup {
     }
 
     @Test(priority = 3)
-    public void searchRoom(){
+    public void searchRoom() throws Exception {
         validataHelper = new ValidataHelper(driver);
         manageRoomPage_view = manageRoomPage.viewRoom();
         manageRoomPage_edit = manageRoomPage_view.checkViewRoomPage();
-        manageRoomPage_edit.roomPage();
+        manageRoomPage_edit.roomPageSuccess();
     }
-//    @AfterClass
-//    public void closeBrowser(){
-//        driver.close();
-//    }
+    @AfterClass
+    public void closeBrowser(){
+        driver.close();
+    }
 }

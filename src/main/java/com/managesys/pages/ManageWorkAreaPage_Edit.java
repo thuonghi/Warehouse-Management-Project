@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import static com.managesys.testcases.ManageWorkAreaPage_Edit.excel;
+
 public class ManageWorkAreaPage_Edit {
     private WebDriver driver;
     private ValidataHelper validataHelper;
@@ -30,7 +32,7 @@ public class ManageWorkAreaPage_Edit {
 
 
 
-    public void areaPage(){
+    public void editAreaSuccess() throws Exception {
         validataHelper.waitForPageLoaded();
 //        Assert.assertTrue(validataHelper.verifyUrl(url), "Not Manage Area Page");
 //      Assert.assertTrue(validataHelper.verifyTitle(titlePage,pageHeader));
@@ -43,12 +45,12 @@ public class ManageWorkAreaPage_Edit {
         validataHelper.hoverElement(codeInput);
         validataHelper.clickElement(codeInput);
         validataHelper.clearElement(codeInput);
-        validataHelper.setText(codeInput, "KV1020");
+        validataHelper.setText(codeInput, excel.getCellData("code work area", 1));
 
         //setText into Area Name
         validataHelper.clickElement(nameInput);
         validataHelper.clearElement(nameInput);
-        validataHelper.setText(nameInput, "KVLV2408");
+        validataHelper.setText(nameInput, excel.getCellData("name work area", 1));
 
         //click Save
         validataHelper.clickElement(saveBtn);
@@ -57,6 +59,31 @@ public class ManageWorkAreaPage_Edit {
 //      Assert.assertTrue(validataHelper.verifyTitle(popupHeader, popupTitle), "Not display pop up confirm");
         validataHelper.clickElement(editAreaBtn);
         Assert.assertTrue(validataHelper.verifyUrl(url), "Have not move to manage work area page");
+    }
 
+    public void editAreaFail() throws Exception {
+        validataHelper.waitForPageLoaded();
+//        Assert.assertTrue(validataHelper.verifyUrl(url), "Not Manage Area Page");
+//      Assert.assertTrue(validataHelper.verifyTitle(titlePage,pageHeader));
+//        validataHelper.clickElement(editBtn);
+//        validataHelper.waitForPageLoaded();
+//      Assert.assertTrue(validataHelper.verifyTitle(titleEditAreaPage, editAreaHeader), "Not edit area page");
+        for(int i = 1; i < 4; i ++) {
+            validataHelper.hoverElement(iconTooltip);
+
+            //setText into Area Code
+            validataHelper.hoverElement(codeInput);
+            validataHelper.clickElement(codeInput);
+            validataHelper.clearElement(codeInput);
+            validataHelper.setText(codeInput, excel.getCellData("code work area", i));
+
+            //setText into Area Name
+            validataHelper.clickElement(nameInput);
+            validataHelper.clearElement(nameInput);
+            validataHelper.setText(nameInput, excel.getCellData("name work area", i));
+
+            //click Save
+            validataHelper.clickElement(saveBtn);
+        }
     }
 }

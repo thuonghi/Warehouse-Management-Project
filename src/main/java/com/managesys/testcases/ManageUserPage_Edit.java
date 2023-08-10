@@ -3,8 +3,8 @@ package com.managesys.testcases;
 import com.managesys.base.BaseSetup;
 import com.managesys.base.ExcelUtils;
 import com.managesys.base.ValidataHelper;
+import com.managesys.pages.ManageRoomPage;
 import com.managesys.pages.ManageUserPage;
-import com.managesys.pages.ManageWorkAreaPage;
 import com.managesys.pages.SignInPage;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,16 +18,13 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 
-public class ManageWorkAreaPage_Edit extends BaseSetup {
+public class ManageUserPage_Edit extends BaseSetup {
     private WebDriver driver;
     public SignInPage signInPage;
     private ValidataHelper validataHelper;
     private ManageUserPage manageUserPage;
-    private ManageWorkAreaPage manageWorkAreaPage;
-    private com.managesys.pages.ManageWorkAreaPage_Edit manageWorkAreaPage_edit;
+    private com.managesys.pages.ManageUserPage_Edit manageUserPage_edit;
     public static ExcelUtils excel;
-
-
 
     @BeforeClass
     public void setUp() {
@@ -40,31 +37,27 @@ public class ManageWorkAreaPage_Edit extends BaseSetup {
         signInPage = new SignInPage(driver);
         excel.setExcelFile("src/Test_data/Test_data.xlsx", "Login sucessfully");
         manageUserPage = signInPage.signIn(excel.getCellData("email", 1), excel.getCellData("password", 1));
-
     }
 
     @Test(priority = 1)
-    public void openManageAreaPage() {
+    public void openEditUser() {
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage=manageUserPage.openManageArea();
+        manageUserPage_edit=manageUserPage.editUser();
     }
 
-    @Test(priority = 3, description = "Edit work area successfully with correct data")
-    public void editWorkAreaSuccess() throws Exception {
+    @Test(priority = 3, description = "Edit user successfully with correct data")
+    public void editUserSuccess() throws Exception {
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage_edit=manageWorkAreaPage.editWorkArea();
-        excel.setExcelFile("src/Test_data/Test_data.xlsx", "EditWorkAreaSuccess");
-        manageWorkAreaPage_edit.editAreaSuccess();
+        excel.setExcelFile("src/Test_data/Test_data.xlsx", "EditUserSuccess");
+        manageUserPage_edit.editUserSuccess();
     }
 
-    @Test(priority = 3, description = "Edit work area failed with incorrect data")
-    public void editWorkAreaFail() throws Exception {
+    @Test(priority = 3, description = "Edit user failed with incorrect data")
+    public void editUserFail() throws Exception {
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage_edit=manageWorkAreaPage.editWorkArea();
-        excel.setExcelFile("src/Test_data/Test_data.xlsx", "EditWorkAreaFail");
-        manageWorkAreaPage_edit.editAreaFail();
+        excel.setExcelFile("src/Test_data/Test_data.xlsx", "EditUserFail");
+        manageUserPage_edit.editUserFail();
     }
-
     @AfterMethod
     public void takeScreenshot(ITestResult result) throws InterruptedException {
         // Screenshot nếu test fail

@@ -7,11 +7,10 @@ import com.managesys.pages.ManageWorkAreaPage;
 import com.managesys.pages.ManageWorkAreaPage_Edit;
 import com.managesys.pages.SignInPage;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class DashboardTest extends BaseSetup {
+public class OtherCase extends BaseSetup {
     private WebDriver driver;
     public SignInPage signInPage;
     private ValidataHelper validataHelper;
@@ -30,8 +29,19 @@ public class DashboardTest extends BaseSetup {
     @Test(priority = 0)
     public void signIn() throws Exception {
         signInPage = new SignInPage(driver);
-
-
+        manageUserPage = signInPage.signIn("admin@gmail.com", "Abc@1234");
     }
+
+    @Test(priority = 1)
+    public void lockAccount() {
+        validataHelper = new ValidataHelper(driver);
+        manageUserPage.lockAccount();
+    }
+    @Test(priority = 2)
+    public void setNewPassword() {
+        validataHelper = new ValidataHelper(driver);
+        manageUserPage.setNewPassword();
+    }
+
 }
 

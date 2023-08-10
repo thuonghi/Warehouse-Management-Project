@@ -5,6 +5,9 @@ import com.managesys.base.ValidataHelper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import static com.managesys.testcases.ManageRoomPage_Edit.excel;
+
+
 public class ManageRoomPage_Edit {
     private WebDriver driver;
     private ValidataHelper validataHelper;
@@ -29,7 +32,7 @@ public class ManageRoomPage_Edit {
 
 
 
-    public void roomPage(){
+    public void roomPageSuccess() throws Exception {
         validataHelper.waitForPageLoaded();
 //        Assert.assertTrue(validataHelper.verifyUrl(url), "Not Manage Area Page");
 //      Assert.assertTrue(validataHelper.verifyTitle(titlePage,pageHeader));
@@ -42,7 +45,7 @@ public class ManageRoomPage_Edit {
         validataHelper.hoverElement(roomInput);
         validataHelper.clickElement(roomInput);
         validataHelper.clearElement(roomInput);
-        validataHelper.setText(roomInput, "Hành chính");
+        validataHelper.setText(roomInput, excel.getCellData("room name", 1));
 
 
         //click Save
@@ -52,6 +55,28 @@ public class ManageRoomPage_Edit {
 //      Assert.assertTrue(validataHelper.verifyTitle(popupHeader, popupTitle), "Not display pop up confirm");
         validataHelper.clickElement(editAreaBtn);
         Assert.assertTrue(validataHelper.verifyUrl(url), "Have not move to manage work area page");
-
     }
+
+    public void roomPageFail() throws Exception {
+        validataHelper.waitForPageLoaded();
+//        Assert.assertTrue(validataHelper.verifyUrl(url), "Not Manage Area Page");
+//      Assert.assertTrue(validataHelper.verifyTitle(titlePage,pageHeader));
+//        validataHelper.clickElement(editBtn);
+//        validataHelper.waitForPageLoaded();
+//      Assert.assertTrue(validataHelper.verifyTitle(titleEditAreaPage, editAreaHeader), "Not edit area page");
+        for (int i = 1; i < 5; i++) {
+            validataHelper.hoverElement(iconTooltip);
+
+            //setText into Room Input
+            validataHelper.hoverElement(roomInput);
+            validataHelper.clickElement(roomInput);
+            validataHelper.clearElement(roomInput);
+            validataHelper.setText(roomInput, excel.getCellData("room name", i));
+            //click Save
+            validataHelper.clickElement(saveBtn);
+            validataHelper.clickElement(editAreaBtn);
+            Assert.assertTrue(validataHelper.verifyUrl(url), "Have not move to manage work area page");
+        }
+    }
+
 }

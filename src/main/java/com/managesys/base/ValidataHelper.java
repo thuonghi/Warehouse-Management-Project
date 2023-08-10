@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.Alert;
 import org.testng.Assert;
@@ -80,6 +81,23 @@ public class ValidataHelper {
         actions = new Actions(driver);
         actions.sendKeys(driver.findElement(element), value).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
+    }
+
+    //select dropdown tĩnh
+    public void selectOptions(By element, String value, String input, int totalOption){
+        Select select = new Select(driver.findElement(element));
+        select.selectByValue(value);
+        Assert.assertFalse(select.isMultiple());
+        Assert.assertEquals(totalOption, select.getOptions().size());
+//        Assert.assertEquals(input, select.getFirstSelectedOption().getText());
+    }
+
+    //radio handle
+    public void handleCheckbox(By element){
+        driver.findElement(element).isEnabled();
+        driver.findElement(element).isSelected();
+        driver.findElement(element).click();
+
     }
 
     //Wait for page load

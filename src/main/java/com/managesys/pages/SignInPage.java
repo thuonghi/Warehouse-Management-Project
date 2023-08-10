@@ -1,9 +1,10 @@
 package com.managesys.pages;
 
 import com.managesys.base.ValidataHelper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.io.FileHandler;
+
+import java.io.File;
 
 public class SignInPage {
 
@@ -48,7 +49,6 @@ public class SignInPage {
         validataHelper.waitForPageLoaded();
         return new ManageUserPage(driver);
     }
-
 
 }
 

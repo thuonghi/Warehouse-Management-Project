@@ -23,6 +23,12 @@ public class ManageUserPage {
     }
 
     private String url = "/user#";
+    private By addBtn = By.xpath("//div[2]/a[1]/button[1]");
+    private By searchBtn = By.xpath("//input[@type='text']");
+    private By editBtn = By.xpath("//tbody[1]/tr[2]/td[9]/a[1]");
+    private By viewBtn = By.xpath("//table[1]/tbody[1]/tr[2]/td[10]/a[1]");
+    private By lockAccountBtn = By.xpath("//tbody/tr[3]/td[11]/a[1]");
+    private By setNewPassBtn = By.xpath("//tbody/tr[3]/td[12]/a[1]");
 
     public void verifyUrl(){
         Assert.assertTrue(validataHelper.verifyUrl(url), "Not Manage User Page!");
@@ -46,6 +52,36 @@ public class ManageUserPage {
         return new DeFaultPasswordPage (driver);
     }
 
+    public ManageUserPage_Add addUser(){
+        driver.findElement(addBtn).click();
+        validataHelper.waitForPageLoaded();
+        return new ManageUserPage_Add(driver);
+    }
 
+    public ManageUserPage_Edit editUser(){
+        driver.findElement(editBtn).click();
+        validataHelper.waitForPageLoaded();
+        return new ManageUserPage_Edit(driver);
+    }
 
+    public ManageUserPage_Search searchUser(){
+        driver.findElement(searchBtn).click();
+        validataHelper.waitForPageLoaded();
+        return new ManageUserPage_Search(driver);
+    }
+
+    public ManageUserPage_View viewDetailUser(){
+        driver.findElement(viewBtn).click();
+        validataHelper.waitForPageLoaded();
+        return new ManageUserPage_View(driver);
+    }
+    public void lockAccount(){
+        driver.findElement(lockAccountBtn).click();
+        validataHelper.alertAccept();
+    }
+
+    public void setNewPassword(){
+        driver.findElement(setNewPassBtn).click();
+        validataHelper.alertAccept();
+    }
 }

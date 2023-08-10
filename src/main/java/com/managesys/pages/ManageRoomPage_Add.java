@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import static com.managesys.testcases.ManageRoomPage_Add.excel;
+
 public class ManageRoomPage_Add {
     private WebDriver driver;
     private ValidataHelper validataHelper;
@@ -23,31 +25,46 @@ public class ManageRoomPage_Add {
 
     private String url = "/department/add";
     private String addNewHeader = "Thêm mới phòng ban";
-    private String roomValue = "0999";
     private String popupHeader = "Xác nhận";
     private String popupContent = "Bạn có thực sự muốn thêm mới phòng ban này";
     private String Url = "/department";
 
-    public void addNewRoom() {
+    public void addNewRoomFail() throws Exception {
         Assert.assertTrue(validataHelper.verifyUrl(url), "Not add new work area page");
 //      Assert.assertTrue(validataHelper.verifyTitle(addNewTitle, addNewHeader), "Not add new work area page");
-        validataHelper.hoverElement(iconTooltip);
+        for (int i = 1; i < 5; i++) {
+            validataHelper.hoverElement(iconTooltip);
 
-        validataHelper.hoverElement(roomInput);
-        validataHelper.clickElement(roomInput);
-        validataHelper.clearElement(roomInput);
-        validataHelper.setText(roomInput, roomValue);
+            validataHelper.hoverElement(roomInput);
+            validataHelper.clickElement(roomInput);
+            validataHelper.clearElement(roomInput);
+            validataHelper.setText(roomInput, excel.getCellData("room name", i));
+            validataHelper.clickElement(saveBtn);
 
+            //Popup Handle
+//        Assert.assertTrue(validataHelper.verifyTitle(popupTitle, popupHeader), "Not display pop up confirm");
+//        Assert.assertTrue(validataHelper.verifyTitle(popupText, popupContent), "Not display pop up confirm");
+            validataHelper.clickElement(addBtn);
+            Assert.assertTrue(validataHelper.verifyUrl(Url), "Have not move to manage room page");
+        }
+    }
 
-        validataHelper.clickElement(saveBtn);
+    public void addNewRoomSuccess() throws Exception {
+        Assert.assertTrue(validataHelper.verifyUrl(url), "Not add new work area page");
+//      Assert.assertTrue(validataHelper.verifyTitle(addNewTitle, addNewHeader), "Not add new work area page");
+            validataHelper.hoverElement(iconTooltip);
+
+            validataHelper.hoverElement(roomInput);
+            validataHelper.clickElement(roomInput);
+            validataHelper.clearElement(roomInput);
+            validataHelper.setText(roomInput, excel.getCellData("room name", 1));
+            validataHelper.clickElement(saveBtn);
 
         //Popup Handle
 //        Assert.assertTrue(validataHelper.verifyTitle(popupTitle, popupHeader), "Not display pop up confirm");
 //        Assert.assertTrue(validataHelper.verifyTitle(popupText, popupContent), "Not display pop up confirm");
         validataHelper.clickElement(addBtn);
         Assert.assertTrue(validataHelper.verifyUrl(Url), "Have not move to manage room page");
-
-
     }
 
 }

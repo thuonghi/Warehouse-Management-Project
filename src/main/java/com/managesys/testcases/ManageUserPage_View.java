@@ -3,24 +3,19 @@ package com.managesys.testcases;
 import com.managesys.base.BaseSetup;
 import com.managesys.base.ValidataHelper;
 import com.managesys.pages.ManageUserPage;
-import com.managesys.pages.ManageWorkAreaPage;
-import com.managesys.pages.ManageWorkAreaPage_Edit;
 import com.managesys.pages.SignInPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class ManageWorkAreaPage_View extends BaseSetup {
+public class ManageUserPage_View extends BaseSetup {
     private WebDriver driver;
     public SignInPage signInPage;
     private ValidataHelper validataHelper;
     private ManageUserPage manageUserPage;
-    private ManageWorkAreaPage manageWorkAreaPage;
-    private com.managesys.pages.ManageWorkAreaPage_View manageWorkAreaPage_view;
-    private ManageWorkAreaPage_Edit manageWorkAreaPage_edit;
 
-
+    private com.managesys.pages.ManageUserPage_View manageUserPage_view;
 
     @BeforeClass
     public void setUp() {
@@ -34,17 +29,16 @@ public class ManageWorkAreaPage_View extends BaseSetup {
     }
 
     @Test(priority = 1)
-    public void openManageAreaPage() {
+    public void openViewDetailUserPage() {
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage=manageUserPage.openManageArea();
+        manageUserPage_view=manageUserPage.viewDetailUser();
     }
 
-    @Test(priority = 3)
-    public void viewWorkArea() throws Exception {
+    @Test(priority = 2)
+    public void viewDetailUser(){
         validataHelper = new ValidataHelper(driver);
-        manageWorkAreaPage_view=manageWorkAreaPage.viewWorkArea();
-        manageWorkAreaPage_edit = manageWorkAreaPage_view.checkViewAreaPage();
-        manageWorkAreaPage_edit.editAreaSuccess();
+        manageUserPage_view.checkSeeDetailUserPage();
+
     }
 
     @AfterClass

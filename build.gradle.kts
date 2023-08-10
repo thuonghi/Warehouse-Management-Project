@@ -21,9 +21,8 @@ dependencies {
     testImplementation ("org.slf4j:slf4j-simple:1.7.36")
     // https://mvnrepository.com/artifact/org.apache.poi/poi
     implementation ("org.apache.poi:poi:5.2.3")
-
-
-
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    implementation ("org.apache.poi:poi-ooxml:5.2.3")
 
 
 }

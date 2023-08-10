@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="D:/Download/Online-Marriage-Registration-main/POM/src/main/java/com/managesys"><classes><class name="com.managesys.testcases.SignInTest"><methods><include name="signIn"/><include name="openManageAreaPage"/></methods></class></classes></test></suite>
