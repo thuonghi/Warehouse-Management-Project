@@ -12,7 +12,7 @@
                     <include name="signIn"></include>
                     <include name="openEditUser"></include>
                     <include name="editUserFail"></include>
-                    <exclude name="editUserSucess"></exclude>
+                    <exclude name="editUserSuccess"></exclude>
                 </methods>
             </class>
         </classes>
