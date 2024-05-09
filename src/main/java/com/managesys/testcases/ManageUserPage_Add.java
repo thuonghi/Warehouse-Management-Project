@@ -15,7 +15,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import java.io.File;
 
 public class ManageUserPage_Add extends BaseSetup {
@@ -41,6 +40,7 @@ public class ManageUserPage_Add extends BaseSetup {
         signInPage = new SignInPage(driver);
         excel.setExcelFile("src/Test_data/Test_data.xlsx", "Login sucessfully");
         manageUserPage = signInPage.signIn(excel.getCellData("email", 1), excel.getCellData("password", 1));
+
     }
 
     @Test(priority = 1)

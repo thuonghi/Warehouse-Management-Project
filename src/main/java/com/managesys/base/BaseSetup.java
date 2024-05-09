@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
@@ -37,6 +36,7 @@ public class BaseSetup {
         return driver;
     }
 
+
     private void setDriver(String browserType, String appURL) {
         switch (browserType) {
             case "chrome":
@@ -67,6 +67,7 @@ public class BaseSetup {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         return driver;
     }
+
 
     private WebDriver initFirefoxDriver() {
         System.out.println("Launching Firefox browser...");

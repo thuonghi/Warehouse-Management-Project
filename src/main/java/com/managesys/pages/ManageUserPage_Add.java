@@ -1,10 +1,14 @@
 package com.managesys.pages;
 
 import com.managesys.base.ValidataHelper;
-import com.managesys.testcases.ManageWorkAreaPage_Add;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
+import java.time.Duration;
+
 import static com.managesys.testcases.ManageUserPage_Add.excel;
 
 public class ManageUserPage_Add {
@@ -35,14 +39,10 @@ public class ManageUserPage_Add {
 
 
     private String url = "/user/add";
-//    private String addNewUserHeader = "Thêm người dùng";
-//    private String popupHeader = "Xác nhận";
-//    private String popupContent = "Bạn có thực sự muốn thêm nguời dùng này";
     private String Url = "/user";
 
     public void addNewUserFail() throws Exception {
         Assert.assertTrue(validataHelper.verifyUrl(url), "Not add new user page");
-//      Assert.assertTrue(validataHelper.verifyTitle(addNewTitle, addNewUserHeader), "Not add new user page");
         for (int i = 1; i < 4; i++) {
             validataHelper.hoverElement(iconTooltip);
 
@@ -61,7 +61,7 @@ public class ManageUserPage_Add {
 
             validataHelper.selectOptions(roomSelect, "3", "Công nghệ", 24);
             validataHelper.selectOptions(roleSelect, "3", "Quản lý xuất hàng", 7);
-            validataHelper.selectOptions(workAreaSelect, "3", "0084", 45);
+            validataHelper.selectOptions(workAreaSelect, "3", "0084", 12);
 
 
             validataHelper.clickElement(codeUserInput);
@@ -70,18 +70,15 @@ public class ManageUserPage_Add {
             validataHelper.clickElement(saveBtn);
         }
 
-        //Popup Handle
-//        Assert.assertTrue(validataHelper.verifyTitle(popupTitle, popupHeader), "Not display pop up confirm");
-//        Assert.assertTrue(validataHelper.verifyTitle(popupText, popupContent), "Not display pop up confirm");
         validataHelper.clickElement(addBtn);
         Assert.assertTrue(validataHelper.verifyUrl(Url), "Have not move to manage user page");
     }
 
     public void addNewUserSucess() throws Exception {
         Assert.assertTrue(validataHelper.verifyUrl(url), "Not add new user page");
-//      Assert.assertTrue(validataHelper.verifyTitle(addNewTitle, addNewUserHeader), "Not add new user page");
         validataHelper.hoverElement(iconTooltip);
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         validataHelper.hoverElement(nameInput);
         validataHelper.clickElement(nameInput);
         validataHelper.clearElement(nameInput);
@@ -95,9 +92,9 @@ public class ManageUserPage_Add {
         validataHelper.clearElement(phoneInput);
         validataHelper.setText(phoneInput, excel.getCellData("phone", 2));
 
-        validataHelper.selectOptions(roomSelect, "3", "Công nghệ", 24);
+        validataHelper.selectOptions(roomSelect, "3", "Công nghệ", 8);
         validataHelper.selectOptions(roleSelect, "3", "Quản lý xuất hàng", 7);
-        validataHelper.selectOptions(workAreaSelect, "3", "0084", 45);
+        validataHelper.selectOptions(workAreaSelect, "3", "0084", 12);
 
 
         validataHelper.clickElement(codeUserInput);
@@ -105,9 +102,6 @@ public class ManageUserPage_Add {
         validataHelper.setText(codeUserInput, excel.getCellData("user code", 2));
         validataHelper.clickElement(saveBtn);
 
-    //Popup Handle
-//        Assert.assertTrue(validataHelper.verifyTitle(popupTitle, popupHeader), "Not display pop up confirm");
-//        Assert.assertTrue(validataHelper.verifyTitle(popupText, popupContent), "Not display pop up confirm");
         validataHelper.clickElement(addBtn);
         Assert.assertTrue(validataHelper.verifyUrl(Url), "Have not move to manage user page");
     }

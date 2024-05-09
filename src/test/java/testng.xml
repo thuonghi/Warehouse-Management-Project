@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <parameter name="browserType" value="edge"></parameter>
-    <parameter name="webURL" value="http://54.169.237.138:81/"></parameter>
+    <parameter name="browserType" value="chrome"></parameter>
+    <parameter name="webURL" value="http://54.179.135.95:81/"></parameter>
     <test verbose="2" preserve-order="true" name="D:/POM">
         <classes>
-            <class name="com.managesys.testcases.SignIn">
-
+            <class name="com.managesys.testcases.ManageUserPage_Add">
+                <methods>
+                    <include name="setUp"></include>
+                    <include name="signIn"></include>
+                    <include name="openAddNewUser"></include>
+                    <exclude name="addNewUserFail"></exclude>
+                    <include name="addNewUserSuccess"></include>
+                </methods>
             </class>
         </classes>
     </test>
